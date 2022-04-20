@@ -1,0 +1,64 @@
+# File: roman_numerals_helper.py
+'''
+Create a RomanNumerals class that can convert a roman numeral to and from an 
+integer value. It should follow the API demonstrated in the examples 
+below. Multiple roman numeral values will be tested for each helper method.
+
+Modern Roman numerals are written by expressing each digit separately 
+starting with the left most digit and skipping any digit with a value of 
+zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting 
+in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each 
+Roman symbol in descending order: MDCLXVI.
+
+Input range : 1 <= n < 4000
+
+In this kata 4 should be represented as IV, NOT as IIII (the "watchmaker's 
+four").
+Examples
+
+RomanNumerals.to_roman(1000) # should return 'M'
+RomanNumerals.from_roman('M') # should return 1000
+
+Symbol 	Value
+I 	1
+IV 	4
+V 	5
+X 	10
+L 	50
+C 	100
+D 	500
+M 	1000
+'''
+class RomanNumerals():
+    symbols = ('I', 'IV', 'V', 'X', 'L', 'C', 'D', 'M')
+    values = (1, 4, 5, 10, 50, 100, 500, 1000)
+    symbol_to_value = dict(zip(symbols, values))
+    value_to_symbol = dict(zip(values, symbols)
+
+    def to_roman(number):
+        pass
+        roman_output = ''
+        number_string = str(number)
+        # Process ones digit.
+        ones_digit = int(number_string[-1])
+        roman_output = value_to_symbol[ones_digit]
+
+        # If there is a tens digit, process it.
+        if len(number_string) > 1:
+            tens_digit = int(number_string[-2])
+            roman_output = value_to_symbol[tens_digit] + roman_output
+            
+        # If there is a hundreds digit, process it.
+        if len(number_string) > 2:
+            hundreds_digit = int(number_string[-3])
+            roman_output = value_to_symbol[hundreds_digit] + roman_output
+
+        # If there is a thousands digit, process it.
+        if len(number_string) > 3:
+            thousands_digit = int(number_string[-4])
+            roman_output = value_to_symbol[thousands_digit] + roman_output
+       
+        return roman_output
+    
+    def from_roman(numeral):
+        pass
